@@ -56,7 +56,7 @@ extension ViewController : GMSMapViewDelegate{
         marker.title = tappedMarker.title
         marker.map = mapView
         tappedMarker = marker
-        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
     }
 }
 extension ViewController : CLLocationManagerDelegate{
