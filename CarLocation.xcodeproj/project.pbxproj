@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C51D648355A6AAB0FC17520 /* Pods_CarLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8188CA41B74E304C14C2E289 /* Pods_CarLocation.framework */; };
 		77C6B9BF20C0F782007F8C2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9BE20C0F782007F8C2E /* AppDelegate.swift */; };
 		77C6B9C120C0F782007F8C2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9C020C0F782007F8C2E /* ViewController.swift */; };
 		77C6B9C420C0F782007F8C2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C6B9C220C0F782007F8C2E /* Main.storyboard */; };
 		77C6B9C620C0F782007F8C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77C6B9C520C0F782007F8C2E /* Assets.xcassets */; };
 		77C6B9C920C0F782007F8C2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C6B9C720C0F782007F8C2E /* LaunchScreen.storyboard */; };
+		77C6B9D120C1122A007F8C2E /* Extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9D020C1122A007F8C2E /* Extension+.swift */; };
+		77C6B9D320C1148D007F8C2E /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9D220C1148D007F8C2E /* Managers.swift */; };
+		77C6B9D520C118BC007F8C2E /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9D420C118BC007F8C2E /* CarModel.swift */; };
+		77C6B9D920C135CE007F8C2E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9D820C135CE007F8C2E /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,13 @@
 		77C6B9C520C0F782007F8C2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77C6B9C820C0F782007F8C2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77C6B9CA20C0F782007F8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77C6B9D020C1122A007F8C2E /* Extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+.swift"; sourceTree = "<group>"; };
+		77C6B9D220C1148D007F8C2E /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
+		77C6B9D420C118BC007F8C2E /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		77C6B9D820C135CE007F8C2E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		7C5943A74566C61D9150E4D2 /* Pods-CarLocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarLocation.release.xcconfig"; path = "Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation.release.xcconfig"; sourceTree = "<group>"; };
+		8188CA41B74E304C14C2E289 /* Pods_CarLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		820366403045C1C155FF3D4F /* Pods-CarLocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarLocation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C51D648355A6AAB0FC17520 /* Pods_CarLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +53,8 @@
 			children = (
 				77C6B9BD20C0F782007F8C2E /* CarLocation */,
 				77C6B9BC20C0F782007F8C2E /* Products */,
+				8E7B2BDE5EF4A0AC1AC1F2B4 /* Pods */,
+				DF5998F562B3C03A603761EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +71,33 @@
 			children = (
 				77C6B9BE20C0F782007F8C2E /* AppDelegate.swift */,
 				77C6B9C020C0F782007F8C2E /* ViewController.swift */,
+				77C6B9D420C118BC007F8C2E /* CarModel.swift */,
+				77C6B9D220C1148D007F8C2E /* Managers.swift */,
+				77C6B9D020C1122A007F8C2E /* Extension+.swift */,
+				77C6B9D820C135CE007F8C2E /* InfoView.swift */,
 				77C6B9C220C0F782007F8C2E /* Main.storyboard */,
 				77C6B9C520C0F782007F8C2E /* Assets.xcassets */,
 				77C6B9C720C0F782007F8C2E /* LaunchScreen.storyboard */,
 				77C6B9CA20C0F782007F8C2E /* Info.plist */,
 			);
 			path = CarLocation;
+			sourceTree = "<group>";
+		};
+		8E7B2BDE5EF4A0AC1AC1F2B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				820366403045C1C155FF3D4F /* Pods-CarLocation.debug.xcconfig */,
+				7C5943A74566C61D9150E4D2 /* Pods-CarLocation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DF5998F562B3C03A603761EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8188CA41B74E304C14C2E289 /* Pods_CarLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77C6B9CD20C0F782007F8C2E /* Build configuration list for PBXNativeTarget "CarLocation" */;
 			buildPhases = (
+				E40A13DD848B19DBD661C3FB /* [CP] Check Pods Manifest.lock */,
 				77C6B9B720C0F782007F8C2E /* Sources */,
 				77C6B9B820C0F782007F8C2E /* Frameworks */,
 				77C6B9B920C0F782007F8C2E /* Resources */,
+				244B495D56AB945C44CEC0B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,13 +169,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		244B495D56AB945C44CEC0B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E40A13DD848B19DBD661C3FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CarLocation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		77C6B9B720C0F782007F8C2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				77C6B9C120C0F782007F8C2E /* ViewController.swift in Sources */,
+				77C6B9D520C118BC007F8C2E /* CarModel.swift in Sources */,
+				77C6B9D320C1148D007F8C2E /* Managers.swift in Sources */,
 				77C6B9BF20C0F782007F8C2E /* AppDelegate.swift in Sources */,
+				77C6B9D120C1122A007F8C2E /* Extension+.swift in Sources */,
+				77C6B9D920C135CE007F8C2E /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +355,7 @@
 		};
 		77C6B9CE20C0F782007F8C2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 820366403045C1C155FF3D4F /* Pods-CarLocation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +371,7 @@
 		};
 		77C6B9CF20C0F782007F8C2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C5943A74566C61D9150E4D2 /* Pods-CarLocation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
