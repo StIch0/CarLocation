@@ -7,6 +7,8 @@ target 'CarLocation' do
   source 'https://github.com/CocoaPods/Specs.git'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
   # Pods for CarLocation
 
 end

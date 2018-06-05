@@ -9,6 +9,8 @@
 import Foundation
 import GoogleMaps
 import GooglePlaces
+import Alamofire
+import SwiftyJSON
 extension ViewController : GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         return UIView()
@@ -51,12 +53,73 @@ extension ViewController : GMSMapViewDelegate{
     //tap to button Выбрать
     @objc func tapToButton(){
         infoView.removeFromSuperview()        
-        mapView.clear()
+        //mapView.clear()
         let marker = GMSMarker(position: tappedMarker.position)
         marker.title = tappedMarker.title
         marker.map = mapView
         tappedMarker = marker
-        Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
+        getAddres(marker: tappedMarker, currentAdd: {
+            returnAddres in
+            print(" MyAddres = \(returnAddres)")
+        })
+        let origin = "\(mapView.myLocation?.coordinate.latitude ?? 0),\(mapView.myLocation?.coordinate.longitude ?? 0)"
+        let destination = "\(tappedMarker.position.latitude),\(tappedMarker.position.longitude)"
+//        addMarker.getRoutes(method: .post, parameters: [
+//            "origin":origin as AnyObject ,
+//            "destination": destination as AnyObject,
+//            "mode":"walking"  as AnyObject,
+//            "alternatives" :true  as AnyObject,
+//            "key": apiKey as AnyObject], completion: {
+//                data in
+//                print(data)
+//        })
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&alternatives=\(true)&key=AIzaSyCGGX2kVq7G3tcA0_SRK1-tiXC64kBtFag"
+        Alamofire.request(url).responseJSON{
+            responseJson in
+            switch responseJson.result {
+            case .success(let value):
+                //print("Response = \(value)")
+                let json = JSON(value)
+                let routes = json["routes"].arrayValue
+//                print(routes)
+                for i in 0...routes.count-1 {
+                    let routeReviewPolyLine = routes[i]["overview_polyline"].dictionary
+                    let points = routeReviewPolyLine?["points"]?.stringValue
+                    let path = GMSPath(fromEncodedPath: points ?? "")
+                    let polyLine = GMSPolyline(path: path)
+                    polyLine.strokeColor = self.colors[i]
+                    polyLine.strokeWidth = 2
+                    polyLine.map = self.mapView
+                }
+            case .failure(let error):
+                print("Error = \(error.localizedDescription)")
+            }
+        }
+//        gmsMutablePath.add(tappedMarker.position)
+//        let path = GMSPath(fromEncodedPath: "anzbFzeygVaBC?i@WIm@We@g@[i@Oc@Ig@Gs@?_@a@?Ds@Lw@d@gANWGK")
+//        let polyLine : GMSPolyline = GMSPolyline()
+//        polyLine.path = path
+////
+//        polyLine.strokeWidth = 2
+//        polyLine.strokeColor = .red
+//        polyLine.geodesic = true
+//        polyLine.map = mapView
+    }
+    private func getAddres(marker : GMSMarker , currentAdd : @escaping ( _ returnAddres : String)->Void){
+        geoCoder = GMSGeocoder()
+        let coordinate =  marker.position
+        var currentAddres : String = ""
+        geoCoder.reverseGeocodeCoordinate(coordinate) {
+            response , error in
+            if let addres = response?.firstResult(){
+                let lines = addres.lines! as [String]
+                currentAddres = lines.joined(separator: "\n")
+                currentAdd(currentAddres)
+            }
+            else {
+                print("Error = \(error?.localizedDescription ?? "") ")
+            }
+        }
     }
 }
 extension ViewController : CLLocationManagerDelegate{

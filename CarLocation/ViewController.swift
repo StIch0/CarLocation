@@ -9,7 +9,8 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
-
+import Alamofire
+import SwiftyJSON
 class ViewController: UIViewController {
     let apiKey  : String = "AIzaSyBu1s1WyxnVMxofslu0CPwci7_Ojnj5LIY"
     var locationManager = CLLocationManager()
@@ -20,6 +21,9 @@ class ViewController: UIViewController {
     var infoView : InfoView!
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
+    var geoCoder : GMSGeocoder!
+    var gmsMutablePath : GMSMutablePath!
+    var colors  : [UIColor] = [.red, .green ,.blue, .orange, .black, .purple, .cyan, .yellow, .gray]
     override func viewDidLoad() {
         super.viewDidLoad()
         GMSServices.provideAPIKey(apiKey)
@@ -27,6 +31,7 @@ class ViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withTarget: .init(), zoom: zoomLevel)
         mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView.settings.myLocationButton = true
+        
         view = mapView
         mapView.addObserver(self, forKeyPath: "myLocation", options: .new, context: nil)
         DispatchQueue.main.async {
@@ -40,13 +45,16 @@ class ViewController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.requestAlwaysAuthorization()
         placesClient = GMSPlacesClient.shared()
-
+        gmsMutablePath  = GMSMutablePath()
+        
     }
      
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if change![NSKeyValueChangeKey.oldKey] == nil {
             let location = change![NSKeyValueChangeKey.newKey] as! CLLocation
             mapView.camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
+            print("My location = \(location.coordinate)")
+            gmsMutablePath.add(location.coordinate)
                 updateData()
         }
        

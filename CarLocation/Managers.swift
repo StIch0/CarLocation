@@ -9,11 +9,39 @@
 import Foundation
 import GooglePlaces
 import GoogleMaps
+import Alamofire
+import SwiftyJSON
 class Managers{
     static let shared : Managers = {
         return Managers()
     }()
+    private let API_BASE_URL : String = "https://maps.googleapis.com/maps/api/directions/json"
     private init(){}
+   private func getRequest(url : String, method : HTTPMethod, parameters : [String: AnyObject], completion : @escaping (_ : JSON)->Void) -> Void {
+        Alamofire.request(url, method: method, parameters : parameters).responseJSON{
+            response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                completion(json)
+            case .failure(let error):
+                print("Error = \(error.localizedDescription)")
+            }
+            
+        }
+    }
+    func getRoutes(
+                   method : HTTPMethod,
+                   parameters : [String: AnyObject],
+                   completion : @escaping (_ : [String])->Void) -> Void{
+        getRequest(url: API_BASE_URL, method: method, parameters: parameters, completion: {responseJSON in
+            print("responseJSON = \(responseJSON)")
+//            if let responseData = responseJSON.arrayObject{
+//
+//            }
+        })
+        
+    }
     private var carModel : [String : CarModel] = Dictionary()
     //add marker to mapView
     private func showMarker(mapView  : GMSMapView?){

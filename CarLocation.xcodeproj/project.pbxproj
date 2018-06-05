@@ -112,6 +112,7 @@
 				77C6B9B820C0F782007F8C2E /* Frameworks */,
 				77C6B9B920C0F782007F8C2E /* Resources */,
 				244B495D56AB945C44CEC0B4 /* [CP] Copy Pods Resources */,
+				667935F8C8227714742C43F1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,6 +189,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		667935F8C8227714742C43F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E40A13DD848B19DBD661C3FB /* [CP] Check Pods Manifest.lock */ = {
