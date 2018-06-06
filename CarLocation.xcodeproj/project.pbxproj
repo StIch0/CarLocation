@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0C51D648355A6AAB0FC17520 /* Pods_CarLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8188CA41B74E304C14C2E289 /* Pods_CarLocation.framework */; };
+		7704BD5620C7CF4700109AEA /* RoutesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704BD5520C7CF4700109AEA /* RoutesResponse.swift */; };
+		7704BD5820C7D13600109AEA /* RoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704BD5720C7D13600109AEA /* RoutesModel.swift */; };
+		7704BD5A20C7D5A200109AEA /* LegsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704BD5920C7D5A200109AEA /* LegsModel.swift */; };
+		7704BD5C20C7D68100109AEA /* DurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704BD5B20C7D68100109AEA /* DurationModel.swift */; };
+		7704BD6420C7D76400109AEA /* OverViewPolylineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704BD6320C7D76400109AEA /* OverViewPolylineModel.swift */; };
+		7704BD6720C8198F00109AEA /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704BD6620C8198F00109AEA /* ViewModel.swift */; };
 		77C6B9BF20C0F782007F8C2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9BE20C0F782007F8C2E /* AppDelegate.swift */; };
 		77C6B9C120C0F782007F8C2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C6B9C020C0F782007F8C2E /* ViewController.swift */; };
 		77C6B9C420C0F782007F8C2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C6B9C220C0F782007F8C2E /* Main.storyboard */; };
@@ -20,6 +26,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7704BD5520C7CF4700109AEA /* RoutesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesResponse.swift; sourceTree = "<group>"; };
+		7704BD5720C7D13600109AEA /* RoutesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesModel.swift; sourceTree = "<group>"; };
+		7704BD5920C7D5A200109AEA /* LegsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegsModel.swift; sourceTree = "<group>"; };
+		7704BD5B20C7D68100109AEA /* DurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationModel.swift; sourceTree = "<group>"; };
+		7704BD6320C7D76400109AEA /* OverViewPolylineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewPolylineModel.swift; sourceTree = "<group>"; };
+		7704BD6620C8198F00109AEA /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		77C6B9BB20C0F782007F8C2E /* CarLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C6B9BE20C0F782007F8C2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77C6B9C020C0F782007F8C2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +60,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7704BD6520C7D7C700109AEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				77C6B9D420C118BC007F8C2E /* CarModel.swift */,
+				7704BD6320C7D76400109AEA /* OverViewPolylineModel.swift */,
+				7704BD5520C7CF4700109AEA /* RoutesResponse.swift */,
+				7704BD5720C7D13600109AEA /* RoutesModel.swift */,
+				7704BD5920C7D5A200109AEA /* LegsModel.swift */,
+				7704BD5B20C7D68100109AEA /* DurationModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		77C6B9B220C0F782007F8C2E = {
 			isa = PBXGroup;
 			children = (
@@ -71,8 +96,9 @@
 			children = (
 				77C6B9BE20C0F782007F8C2E /* AppDelegate.swift */,
 				77C6B9C020C0F782007F8C2E /* ViewController.swift */,
-				77C6B9D420C118BC007F8C2E /* CarModel.swift */,
+				7704BD6520C7D7C700109AEA /* Models */,
 				77C6B9D220C1148D007F8C2E /* Managers.swift */,
+				7704BD6620C8198F00109AEA /* ViewModel.swift */,
 				77C6B9D020C1122A007F8C2E /* Extension+.swift */,
 				77C6B9D820C135CE007F8C2E /* InfoView.swift */,
 				77C6B9C220C0F782007F8C2E /* Main.storyboard */,
@@ -199,11 +225,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CarLocation/Pods-CarLocation-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,11 +266,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7704BD6420C7D76400109AEA /* OverViewPolylineModel.swift in Sources */,
 				77C6B9C120C0F782007F8C2E /* ViewController.swift in Sources */,
+				7704BD5820C7D13600109AEA /* RoutesModel.swift in Sources */,
 				77C6B9D520C118BC007F8C2E /* CarModel.swift in Sources */,
 				77C6B9D320C1148D007F8C2E /* Managers.swift in Sources */,
+				7704BD5620C7CF4700109AEA /* RoutesResponse.swift in Sources */,
 				77C6B9BF20C0F782007F8C2E /* AppDelegate.swift in Sources */,
 				77C6B9D120C1122A007F8C2E /* Extension+.swift in Sources */,
+				7704BD5C20C7D68100109AEA /* DurationModel.swift in Sources */,
+				7704BD5A20C7D5A200109AEA /* LegsModel.swift in Sources */,
+				7704BD6720C8198F00109AEA /* ViewModel.swift in Sources */,
 				77C6B9D920C135CE007F8C2E /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

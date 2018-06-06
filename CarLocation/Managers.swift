@@ -11,36 +11,35 @@ import GooglePlaces
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
+import AlamofireObjectMapper
+typealias DowloadComplete = ()->()
 class Managers{
     static let shared : Managers = {
         return Managers()
     }()
     private let API_BASE_URL : String = "https://maps.googleapis.com/maps/api/directions/json"
     private init(){}
-   private func getRequest(url : String, method : HTTPMethod, parameters : [String: AnyObject], completion : @escaping (_ : JSON)->Void) -> Void {
-        Alamofire.request(url, method: method, parameters : parameters).responseJSON{
-            response in
+    lazy var routsList : Array = {
+        return [RoutesModel]()
+    }()
+    
+    func loadRouts(parameters : [String : AnyObject],complete : @escaping DowloadComplete){
+        Alamofire.request(API_BASE_URL, method : .get, parameters : parameters).responseObject{
+            (response : DataResponse<RoutesResponse>) in
+            print("self.routsList.count", response.result.value?.routsModelList?.count)
+
             switch response.result {
             case .success(let value):
-                let json = JSON(value)
-                completion(json)
+                if let routesModel = value.routsModelList{
+                    for (_ , route) in routesModel.enumerated(){
+                        self.routsList.append(route)
+                    }
+                }
             case .failure(let error):
                 print("Error = \(error.localizedDescription)")
             }
-            
+            complete()
         }
-    }
-    func getRoutes(
-                   method : HTTPMethod,
-                   parameters : [String: AnyObject],
-                   completion : @escaping (_ : [String])->Void) -> Void{
-        getRequest(url: API_BASE_URL, method: method, parameters: parameters, completion: {responseJSON in
-            print("responseJSON = \(responseJSON)")
-//            if let responseData = responseJSON.arrayObject{
-//
-//            }
-        })
-        
     }
     private var carModel : [String : CarModel] = Dictionary()
     //add marker to mapView

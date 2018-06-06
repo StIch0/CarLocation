@@ -9,6 +9,7 @@ target 'CarLocation' do
   pod 'GooglePlaces'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'AlamofireObjectMapper'
   # Pods for CarLocation
 
 end

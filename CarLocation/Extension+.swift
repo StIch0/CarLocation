@@ -64,7 +64,29 @@ extension ViewController : GMSMapViewDelegate{
         })
         let origin = "\(mapView.myLocation?.coordinate.latitude ?? 0),\(mapView.myLocation?.coordinate.longitude ?? 0)"
         let destination = "\(tappedMarker.position.latitude),\(tappedMarker.position.longitude)"
-//        addMarker.getRoutes(method: .post, parameters: [
+        let parameters = [
+            "origin":origin as AnyObject,
+            "destination": destination as AnyObject,
+            "mode":"walking"  as AnyObject,
+            "alternatives" :"\(true)"  as AnyObject,
+            "key": apiKey as AnyObject]
+        self.viewModel.getRoutes(parameters: parameters, complete: {
+            self.routesModelList = self.viewModel.routesList
+            print(self.viewModel.numberOfRoutes())
+
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            for i in 0...self.routesModelList.count-1{
+                let routeOverViewPolyline = self.routesModelList[i].overViewPolyline
+                let path = GMSPath(fromEncodedPath: (routeOverViewPolyline?.points)!)
+                let polyline = GMSPolyline(path: path)
+                polyline.strokeWidth = 2
+                polyline.strokeColor = self.colors[i]
+                polyline.map = self.mapView
+            }
+        })
+        
+//        addMarker.getRoutes(method: .get, parameters: [
 //            "origin":origin as AnyObject ,
 //            "destination": destination as AnyObject,
 //            "mode":"walking"  as AnyObject,
@@ -73,28 +95,29 @@ extension ViewController : GMSMapViewDelegate{
 //                data in
 //                print(data)
 //        })
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&alternatives=\(true)&key=AIzaSyCGGX2kVq7G3tcA0_SRK1-tiXC64kBtFag"
-        Alamofire.request(url).responseJSON{
-            responseJson in
-            switch responseJson.result {
-            case .success(let value):
-                //print("Response = \(value)")
-                let json = JSON(value)
-                let routes = json["routes"].arrayValue
-//                print(routes)
-                for i in 0...routes.count-1 {
-                    let routeReviewPolyLine = routes[i]["overview_polyline"].dictionary
-                    let points = routeReviewPolyLine?["points"]?.stringValue
-                    let path = GMSPath(fromEncodedPath: points ?? "")
-                    let polyLine = GMSPolyline(path: path)
-                    polyLine.strokeColor = self.colors[i]
-                    polyLine.strokeWidth = 2
-                    polyLine.map = self.mapView
-                }
-            case .failure(let error):
-                print("Error = \(error.localizedDescription)")
-            }
-        }
+       // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=walking&alternatives=\(true)&key=AIzaSyCGGX2kVq7G3tcA0_SRK1-tiXC64kBtFag"
+//        Alamofire.request(url).responseJSON{
+//            responseJson in
+//            switch responseJson.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//                let routes = json["routes"].arrayValue
+//                for i in 0...routes.count-1 {
+//                    let legs = routes[i]["legs"].arrayObject as! [[String : AnyObject]]
+//                    let duration = legs.first!["duration"] as! [[String : AnyObject]]
+//                    print("duration = \(duration)")
+//                    let routeReviewPolyLine = routes[i]["overview_polyline"].dictionary
+//                    let points = routeReviewPolyLine?["points"]?.stringValue
+//                    let path = GMSPath(fromEncodedPath: points ?? "")
+//                    let polyLine = GMSPolyline(path: path)
+//                    polyLine.strokeColor = self.colors[i]
+//                    polyLine.strokeWidth = 2
+//                    polyLine.map = self.mapView
+//                }
+//            case .failure(let error):
+//                print("Error = \(error.localizedDescription)")
+//            }
+//        }
 //        gmsMutablePath.add(tappedMarker.position)
 //        let path = GMSPath(fromEncodedPath: "anzbFzeygVaBC?i@WIm@We@g@[i@Oc@Ig@Gs@?_@a@?Ds@Lw@d@gANWGK")
 //        let polyLine : GMSPolyline = GMSPolyline()
@@ -105,6 +128,7 @@ extension ViewController : GMSMapViewDelegate{
 //        polyLine.geodesic = true
 //        polyLine.map = mapView
     }
+    
     private func getAddres(marker : GMSMarker , currentAdd : @escaping ( _ returnAddres : String)->Void){
         geoCoder = GMSGeocoder()
         let coordinate =  marker.position

@@ -19,10 +19,12 @@ class ViewController: UIViewController {
     let addMarker = Managers.shared
     var tappedMarker = GMSMarker()
     var infoView : InfoView!
+    var viewModel : ViewModel = ViewModel()
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var geoCoder : GMSGeocoder!
     var gmsMutablePath : GMSMutablePath!
+    var routesModelList : [RoutesModel] = Array()
     var colors  : [UIColor] = [.red, .green ,.blue, .orange, .black, .purple, .cyan, .yellow, .gray]
     override func viewDidLoad() {
         super.viewDidLoad()
